@@ -13,10 +13,10 @@ Background
 
 For the purpose of Compliant Kubernetes, one can distinguish between two "styles" of CI/CD: push-style and pull-style.
 
-**Push-style CI/CD** -- like [GitLab CI](https://docs.gitlab.com/ee/ci/) or [GitHub Actions](https://docs.github.com/en/actions) -- means that a commit will trigger some commands on a CI/CD worker, which will push changes into the Compliant Kubernetes cluster. The CI/CD worker generally runs outside the Kubernetes cluster. Push-style CI/CD solutions should work out-of-the-box and require no special considerations for Compliant Kubernetes.
+**Push-style CI/CD** -- like [GitLab CI](https://docs.gitlab.com/ee/ci/) or [GitHub Actions](https://docs.github.com/en/actions) -- means that a commit will trigger some commands on a CI/CD worker, which will push changes into the Compliant Kubernetes environment. The CI/CD worker generally runs outside the environment. Push-style CI/CD solutions should work out-of-the-box and require no special considerations for Compliant Kubernetes.
 
 
-**Pull-styles CI/CD** -- like [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) or [Flux](https://fluxcd.io/) -- means that a special controller is installed inside the cluster, which monitors a Git repository. When a change is detected the controller "pulls" changes into the cluster from the Git repository. The special controller often requires considerable permissions and introduces a new notion of access control, which is problematic from a compliance perspective. As shown below, some pull-style CI/CD solutions can be used with Compliant Kubernetes, others not.
+**Pull-styles CI/CD** -- like [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) or [Flux](https://fluxcd.io/) -- means that a special controller is installed inside the workload cluster, which monitors a Git repository. When a change is detected the controller "pulls" changes into the cluster from the Git repository. The special controller often requires considerable permissions and introduces a new notion of access control, which is problematic from a compliance perspective. As shown below, some pull-style CI/CD solutions can be used with Compliant Kubernetes, others not.
 
 Push-style CI/CD
 ----------------
@@ -54,7 +54,7 @@ kubectl apply -f ci-cd-role.yaml
 !!!important "Dealing with Forbidden or RBAC permissions errors"
     > Error from server (Forbidden): error when creating "STDIN": roles.rbac.authorization.k8s.io "ci-cd" is forbidden: user "demo@example.com" (groups=["system:authenticated"]) is attempting to grant RBAC permissions not currently held:
 
-    If you get an error like the one above, then it means you have insufficient permissions on the Compliant Kubernetes cluster. Contact your administrator.
+    If you get an error like the one above, then it means you have insufficient permissions on the Kubernetes cluster. Contact your administrator.
 
 ### Create a ServiceAccount
 
@@ -129,4 +129,4 @@ Flux v1 is [in maintenance mode](https://github.com/fluxcd/flux/issues/3320) and
 Flux v2
 -------
 
-Flux v2 brings is own notion of access control and requires [special considerations](https://github.com/fluxcd/flux2-multi-tenancy#enforce-tenant-isolation) to ensure it obey Compliant Kubernetes access control. Installing it can only be done by the administrator of the Compliant Kubernetes cluster, after having made a thorough risk-reward analysis. At the time of this writing, due to these special considerations, we discourage Flux v2.
+Flux v2 brings is own notion of access control and requires [special considerations](https://github.com/fluxcd/flux2-multi-tenancy#enforce-tenant-isolation) to ensure it obey Compliant Kubernetes access control. Installing it can only be done by the administrator of the Compliant Kubernetes environment, after having made a thorough risk-reward analysis. At the time of this writing, due to these special considerations, we discourage Flux v2.

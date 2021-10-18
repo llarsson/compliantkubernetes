@@ -17,7 +17,7 @@ The mission of administrators is to make you, the Compliant Kubernetes user, suc
 General Principle
 -----------------
 
-Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent administrators from getting alerts and fixing cluster issues before your application is impacted. Similarly, accidentally deleting fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
+Compliant Kubernetes does not allow users to make any changes which may compromise the security of the platform. This includes compromising or working around access control, logging, monitoring, backups, alerting, etc. For example, accidental deletion of the CustomResourceDefinitions of Prometheus would prevent administrators from getting alerts and fixing issues before your application is impacted. Similarly, accidentally deleting fluentd Pods would make it impossible to capture the Kubernetes audit log and investigate data breaches.
 
 Specifics
 ---------
