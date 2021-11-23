@@ -21,10 +21,19 @@ Bonus:
 
 - [ability to make it crash](https://github.com/elastisys/compliantkubernetes/blob/main/user-demo/routes/crash.js) (`/crash`).
 
-Feel free to clone our user demo for inspiration:
+Feel free to clone our NodeJS user demo for inspiration:
 
 ```bash
 git clone https://github.com/elastisys/compliantkubernetes/
 cd compliantkubernetes/user-demo
 ```
+
+Alternatively, if you are a .NET developer, you can look at the equivalent .NET demo application code here:
+
+```bash
+git clone https://github.com/elastisys/compliantkubernetes/
+cd compliantkubernetes/user-demo-dotnet
+```
+
+
 <!--user-demo-overview-end-->
